@@ -38,10 +38,16 @@ def login():
 @app.route('/catalogo')
 def catalogo():
     if 'conectado' in session:
-        return render_template('public/modulo_login/catalogo.html', dataLogin = dataLoginSesion())
+        return render_template('public/modulo_compras/index_compras.html', dataLogin = dataLoginSesion())
     else:
         return render_template('public/modulo_login/index.html')
 
+@app.route('/carrito')
+def carrito():
+    if 'conectado' in session:
+        return render_template('public/modulo_carrito/index_carrito.html', dataLogin = dataLoginSesion())
+    else:
+        return render_template('public/modulo_login/index.html')
 
 #Ruta para editar el perfil del cliente
 @app.route('/edit-profile', methods=['GET', 'POST'])

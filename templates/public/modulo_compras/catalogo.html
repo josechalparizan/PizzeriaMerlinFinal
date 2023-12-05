@@ -1,0 +1,58 @@
+
+<style>
+    body {
+      background-color: #f8f9fa; /* Un color de fondo claro para resaltar las tarjetas */
+    }
+  
+    .card {
+      background-color: #BD0D0D; /* Color vino tinto para las tarjetas */
+      color: #fff; /* Texto blanco para contrastar */
+      margin-bottom: 20px;
+    }
+  
+    .card-title {
+      color: #fff; /* Color blanco para el título de la tarjeta */
+    }
+  </style>
+  
+  
+  
+  
+  <div class="container">
+    <div class="row">
+  
+      <!-- Tarjeta 1 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{{ url_for('static', filename='img/hw.jfif') }}" class="card-img-top" alt="Pizza Margarita">
+          <div class="card-body">
+            <h5 class="card-title">Pizza Hawaiana</h5>
+            <p class="card-text">La pizza hawaiana es una pizza que contiene una base de salsa pomodoro, queso mozzarella fundido y como toppings jamón y piña.</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Tarjeta 2 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{{ url_for('static', filename='img/carne.jfif') }}" class="card-img-top" alt="Pizza Pepperoni">
+          <div class="card-body">
+            <h5 class="card-title">Pizza Carne</h5>
+            <p class="card-text">Una deliciosa pizza con salsa de tomate, queso, y rodajas de pepperoni.</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Tarjeta 3 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{{ url_for('static', filename='img/tropical.jfif') }}" class="card-img-top" alt="Pizza Hawaiana">
+          <div class="card-body">
+            <h5 class="card-title">Pizza Tropical</h5>
+            <p class="card-text">Una combinación tropical de piña, jamón y queso en una deliciosa pizza.</p>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>

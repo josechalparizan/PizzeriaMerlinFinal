@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block WebDeveloper %}{% endblock %}</title>
   <!--Favicon-->
-  <link rel="shortcut icon" href="{{url_for('static', filename ='assets/imgs/merlin_mago.png')}}" type="image/x-icon">
-  <link rel="icon" href="{{url_for('static', filename ='assets/imgs/merlin_mago.png')}}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{url_for('static', filename ='assets/imgs/favicon.ico')}}" type="image/x-icon">
+  <link rel="icon" href="{{url_for('static', filename ='assets/imgs/favicon.ico')}}" type="image/x-icon">
 
   <!--fuente-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,11 +32,11 @@
   {% include 'public/dashboard/pages/menu.html' %}
 
 
-  <main class="content-wrapper mt-5" style="margin-top:100px !important;">
-    <div class="container" style="width: 100% !important">
+  <main class="content-wrapper mt-5" style="margin-top:80px !important;">
+    <div class="container" style="width: 95% !important">
       {% block body %}
 
-          {% include 'public/dashboard/Dashboard.html' %}
+          {% include 'public/modulo_compras/catalogo.html' %}
 
           {% include 'public/dashboard/pages/alerts.html' %}
 
@@ -46,7 +46,7 @@
 
 
   <!---Include del menu Horizontal-->
-  {% include 'public/dashboard/pages/menufin.html' %}
+  {% include 'public/dashboard/pages/menu.html' %}
 
 
 
