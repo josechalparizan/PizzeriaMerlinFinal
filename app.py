@@ -1,5 +1,5 @@
 #Importando  flask y algunos paquetes
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session,jsonify
 from datetime import date
 from datetime import datetime
 
@@ -9,7 +9,8 @@ from routes import * #Vistas
 
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from flask_sqlalchemy import SQLAlchemy
+from flask_paginate import Pagination
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def loginUser():
@@ -146,7 +147,43 @@ def actualizarMiPerfil(id):
                 cur.close()
                 return render_template('public/dashboard/home.html', msjAlert=msg, typeAlert=1, dataLogin=dataLoginSesion())
         return render_template('public/dashboard/home.html', dataLogin=dataLoginSesion())
-        
+
+@app.route("/pagination", methods=['GET'])
+def pagination():
+    if request.method == "GET":
+        conexion_MySQLdb = connectionBD()
+        cursor = conexion_MySQLdb.cursor(dictionary=True)
+
+        # Contar el número total de registros
+        cursor.execute("SELECT COUNT(*) AS total FROM login_python ")
+        count = cursor.fetchone()['total']
+
+        # Obtener el número de página actual y la cantidad de resultados por página
+        page_num = request.args.get('page', 1, type=int)
+        per_page = 5
+
+        # Calcular el índice del primer registro y limitar la consulta a un rango de registros
+        start_index = (page_num - 1) * per_page + 1
+
+        querySQL = (f"SELECT * FROM login_python "
+                    f"ORDER BY id DESC LIMIT {per_page} OFFSET {(page_num - 1) * per_page}")
+
+        cursor.execute(querySQL)
+        list_personas = cursor.fetchall()
+
+        # Calcular el índice del último registro
+        end_index = min(start_index + per_page, count)
+        if end_index > count:
+            end_index = count
+
+        # Crear objeto paginable
+        pagination = Pagination(page=page_num, total=count, per_page=per_page,
+                                display_msg=f"Mostrando registros {start_index} - {end_index} de un total de <strong>({count})</strong>")
+        conexion_MySQLdb.commit()
+        print(pagination)
+        return render_template('public/modulo_pagination/index_pagination.html', list_personas=list_personas, dataLogin=dataLoginSesion(), pagination=pagination)
+
+
         
 if __name__ == "__main__":
     app.run(debug=True, port=8000)

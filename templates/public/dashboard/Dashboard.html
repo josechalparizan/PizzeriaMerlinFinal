@@ -2,11 +2,10 @@
   <br><br>
   <div class="row justify-content-center">
     <div class="col-md-12 mb-2">
-      <h1 class="text-center">Hola Comunidad, sientanse todos Bienvenidos  😃 👍 <hr></h1>
       {% if(dataLogin.tipoLogin ==1) %}
-          <p class="text-center">Hola Soy <strong> {{ dataLogin.nombre }},</strong> Creador del Proyecto.😅 </p>
+          <p class="text-center">Bienvenido <strong> {{ dataLogin.nombre }},</strong> </p>
         {% else %}
-          <p class="text-center">Hola mi nombre es <strong>{{ dataLogin.nombre }},</strong> soy un usuario. </p>
+          <p class="text-center">Bienvenido <strong>{{ dataLogin.nombre }},</strong> Espero y te guste nuestro sitio </p>
       {% endif %}
     </div>
 
