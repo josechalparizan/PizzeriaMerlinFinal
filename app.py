@@ -10,6 +10,14 @@ from routes import * #Vistas
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
 
+# Inicializa la variable de sesión carrito
+app.secret_key = '97110c78ae51a45af397be6534caef90ebb9b1dcb3380af008f90b23a5d1616bf19bc29098105da20fe'
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_USE_SIGNER'] = True
+app.config['SESSION_KEY_PREFIX'] = 'my_prefix_'
+
+
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def loginUser():

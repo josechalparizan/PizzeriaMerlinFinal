@@ -1,3 +1,25 @@
-<br><br><br><br>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+</head>
+<body>
+<br><br><br><br><br><br><br>
+    <h1>Carrito de Compras</h1>
 
-<h1>aqui va el diseño e incoporaciones del carrito </h1>
+    {% if carrito %}
+        <ul>
+            {% for item in carrito %}
+                <li>{{ item.nombre }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>El carrito está vacío.</p>
+    {% endif %}
+
+    <a href="{{ url_for('inicio') }}" class="btn btn-warning">Volver al Inicio</a>
+
+</body>
+</html>
