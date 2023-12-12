@@ -2,22 +2,26 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from datetime import date
 from datetime import datetime
-
+from flask import Flask, render_template
 from conexionBD import *  #Importando conexion BD
 from funciones import *  #Importando mis Funciones
 from routes import * #Vistas
 
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
-
-# Inicializa la variable de sesión carrito
-app.secret_key = '97110c78ae51a45af397be6534caef90ebb9b1dcb3380af008f90b23a5d1616bf19bc29098105da20fe'
-app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SESSION_PERMANENT'] = False
-app.config['SESSION_USE_SIGNER'] = True
-app.config['SESSION_KEY_PREFIX'] = 'my_prefix_'
+#from flask_mail import Mail
+from flask_mail import Mail, Message
 
 
+# Configuración para Flask-Mail
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465  # Puerto de tu servidor SMTP (generalmente 587 para TLS, 465 para SSL)
+#app.config['MAIL_USE_TLS'] = True  # Cambia a False si estás usando SSL
+app.config['MAIL_USE_SSL'] = True  # Cambia a True si estás usando SSL
+app.config['MAIL_USERNAME'] = 'pruebaflasksistemas@gmail.com'  # correo de envio de mensaje
+app.config['MAIL_PASSWORD'] = 'mzpj ouxh hmgv bvxt'  # contraseña generada para aplicaciones de terceros
+
+mail = Mail(app)
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def loginUser():
@@ -59,8 +63,7 @@ def loginUser():
     return render_template('public/modulo_login/index.html', msjAlert = 'Debe iniciar sesión.', typeAlert=0)
 
 
-
-#Registrando una cuenta de Usuario
+# Registrando una cuenta de Usuario
 @app.route('/registro-usuario', methods=['GET', 'POST'])
 def registerUser():
     msg = ''
@@ -73,7 +76,6 @@ def registerUser():
         password = request.form['password']
         repite_password = request.form['repite_password']
         sexo = request.form['sexo']
-        te_gusta_la_programacion = request.form['te_gusta_la_programacion']
         create_at = date.today()
 
         cursor = conexion_MySQLdb.cursor(dictionary=True)
@@ -92,16 +94,50 @@ def registerUser():
         else:
             password_encriptada = generate_password_hash(password, method='pbkdf2:sha256')
             cursor = conexion_MySQLdb.cursor(dictionary=True)
-            cursor.execute('INSERT INTO login_python (tipo_user, nombre, apellido, email, password, sexo, create_at, te_gusta_la_programacion) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)', (tipo_user, nombre, apellido, email, password_encriptada, sexo, create_at, te_gusta_la_programacion))
+            cursor.execute('INSERT INTO login_python (tipo_user, nombre, apellido, email, password, sexo, create_at) VALUES (%s, %s, %s, %s, %s, %s, %s)', (tipo_user, nombre, apellido, email, password_encriptada, sexo, create_at))
             conexion_MySQLdb.commit()
             cursor.close()
             msg = 'Cuenta creada correctamente!'
+            
+            # Enviar correo electrónico de bienvenida
+            send_welcome_email(email)
 
         return render_template('public/modulo_login/index.html', msjAlert=msg, typeAlert=1)
     return render_template('public/layout.html', dataLogin=dataLoginSesion(), msjAlert=msg, typeAlert=0)
+    # Función para enviar correo de bienvenida
+def send_welcome_email(email):
+    subject = "Bienvenido a Pizzeria Merlin"
+    sender = app.config.get("MAIL_USERNAME")
+    msg = Message(subject, sender=sender, recipients=[email])
 
+    # Cuerpo del correo con HTML que incluye una etiqueta de imagen
+    msg.html = (
+        f"""
+    ¡Hola!
 
+    ¡Bienvenido a Pizzeria Merlin, tu destino para las mejores pizzas deliciosas! Estamos emocionados de tenerte como parte de nuestra comunidad.
 
+    En Pizzeria Merlin, nos dedicamos a brindarte una experiencia gastronómica excepcional. Cada pizza que preparamos está hecha con los ingredientes más frescos y con un toque de amor.
+
+    Explora nuestro menú variado y descubre una amplia gama de sabores que satisfarán tu paladar. Como miembro registrado, disfrutarás de ofertas exclusivas y sorpresas especiales.
+
+    ¿Alguna vez has probado una pizza que despierte tus sentidos? ¡En Pizzeria Merlin, eso es lo que encontrarás!
+
+    Gracias por elegirnos. Siempre estamos aquí para hacer tu experiencia con nosotros memorable. Si tienes alguna pregunta o comentario, no dudes en contactarnos.
+
+    ¡Bienvenido a la familia Merlin!
+
+    Saludos,
+    El equipo de Pizzeria Merlin
+    """
+        
+    )
+
+    # Adjunta la imagen al correo
+    with app.open_resource("static/assets/imgs/logo.png") as img:
+        msg.attach("merlin.jpg", "image/jpg", img.read(), "inline")
+
+    mail.send(msg)
      
 @app.route('/actualizar-mi-perfil/<id>', methods=['POST'])
 def actualizarMiPerfil(id):
@@ -155,8 +191,23 @@ def actualizarMiPerfil(id):
                 return render_template('public/dashboard/home.html', msjAlert=msg, typeAlert=1, dataLogin=dataLoginSesion())
         return render_template('public/dashboard/home.html', dataLogin=dataLoginSesion())
         
-        
+from flask import request, redirect, url_for, session
+
+@app.route('/add_to_cart/<int:product_id>')
+def add_to_cart(product_id):
+    # Obtener el producto según su ID desde la lista de productos
+    product = next((p for p in products if p['id'] == product_id), None)
+
+    # Inicializar el carrito en la sesión si aún no existe
+    if 'cart' not in session:
+        session['cart'] = []
+
+    # Agregar el producto al carrito
+    session['cart'].append({'id': product['id'], 'name': product['name'], 'price': product['price']})
+
+    return redirect(url_for('catalog'))
+
 if __name__ == "__main__":
     app.run(debug=True, port=8000)
     
-    
+#pruebaflasksistemas@gmail.com CONTRSEÑA:PRUEBA.1234

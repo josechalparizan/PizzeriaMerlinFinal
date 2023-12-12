@@ -6,9 +6,7 @@ from flask import request, jsonify
 app = Flask(__name__)
 application = app
 
-
 app.secret_key = '97110c78ae51a45af397be6534caef90ebb9b1dcb3380af008f90b23a5d1616bf19bc29098105da20fe'
-
 
 #Redireccionando cuando la página no existe
 @app.errorhandler(404)
@@ -82,9 +80,3 @@ def agregar_al_carrito():
 
 # Inicializa el carrito como una lista vacía
 carrito = []
-
-@app.route('/ver-carrito')
-def ver_carrito():
-    print(session.get('carrito'))
-    print(request.cookies)
-    return render_template('carrito.html')

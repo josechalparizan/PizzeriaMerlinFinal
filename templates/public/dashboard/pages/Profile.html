@@ -37,18 +37,7 @@
                     <label for="repite_password" class="form-label mt-3" style="color:crimson;">Repetir Password</label>
                     <input type="password" name="repite_password" class="form-control">
                 </div>
-                <div class="col-md-6">
-                    <label for="Country" class="form-label mt-3">País</label>
-                    <select name="pais" class="form-control">
-                        {% for country in dataPaises %}
-                            {% if(dataUser.pais == country.name_country) %}
-                                <option selected value="{{ country.name_country }}">{{ country.name_country }}</option>
-                            {% else %}
-                            <option value="{{ country.name_country }}">{{ country.name_country }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                </div>
+                
             </div>
 
             <div class="row">
@@ -79,7 +68,7 @@
      
             <div class="row text-center justify-content-md-center mt-4">
                 <div class="col-md-12 mt-3 mb-3">
-                    <button type="submit" class="btn btn-primary btn-send">Guardar Cambios</button>
+                    <button type="submit" class="btn btn-primary btn-send " style="background-color: #BD0D0D;color:aliceblue">Guardar Cambios</button>
                 </div>
             </div>
 
