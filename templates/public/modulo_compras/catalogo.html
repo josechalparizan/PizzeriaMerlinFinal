@@ -17,99 +17,54 @@
 <br><br><br><br><br>
 <h2>Productos Disponibles</h2>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo</title>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/carnes.webp') }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">CARNES: 25.000 </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                </div>
+            </div>
+        </div>
 
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/hawaiana.jpg') }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">HAWAIANA: 30.000 </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                </div>
+            </div>
+        </div>
 
-<div class="card">
-  <img src="{{ url_for('static', filename='assets/imgs/margarita.jpeg') }}" class="card-img-top" alt="Pizza Margarita">
-  <div class="card-body">
-      <h5 class="card-title">Pizza Margarita</h5>
-      <p class="card-text">La pizza Margarita es una clásica y deliciosa variedad de pizza de origen italiano,
-         que destaca por su simplicidad y sabores frescos. Esta pizza lleva su nombre en honor a la reina Margarita de Saboya. </p>
-      <button class="btn btn-primary" onclick="agregarAlCarrito('Pizza Margarita')">Agregar al Carrito</button>
-  </div>
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/margarita.jpeg') }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Margarita: 25.000 </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Repite este patrón para cada conjunto de tres tarjetas -->
 </div>
-
-<div class="card">
-  <img src="{{ url_for('static', filename='assets/imgs/peperoni.jpg') }}" class="card-img-top" alt="Pizza Pepperoni">
-  <div class="card-body">
-      <h5 class="card-title">Pizza Pepperoni</h5>
-      <p class="card-text">La pizza Pepperoni es conocida por su sabor robusto y la combinación irresistible de la salinidad del pepperoni con la cremosidad del queso derretido.
-         Es una elección clásica para los amantes de las pizzas con un toque de especias y un perfil de sabor más audaz.</p>
-      <button class="btn btn-primary" onclick="agregarAlCarrito('Pizza Pepperoni')">Agregar al Carrito</button>
-  </div>
-</div>
-
-<!-- Ocho sabores adicionales -->
-
-<div class="card">
-  <img src="{{ url_for('static', filename='assets/imgs/hawaiana.jpg') }}" class="card-img-top" alt="Pizza Hawaiana">
-  <div class="card-body">
-      <h5 class="card-title">Pizza Hawaiana</h5>
-      <p class="card-text">La combinación de sabores salados del jamón, la acidez de la salsa de tomate y el toque dulce de la piña crea una experiencia única y agradable para el paladar. 
-        Aunque la pizza Hawaiana puede generar cierta controversia debido a la inclusión de la piña,
-         es una elección popular para aquellos que disfrutan de contrastes de sabores y desean una experiencia más tropical en su pizza.</p>
-      <button class="btn btn-primary" onclick="agregarAlCarrito('Pizza Hawaiana')">Agregar al Carrito</button>
-  </div>
-</div>
-
-<div class="card">
-  <img src="{{ url_for('static', filename='assets/imgs/mexicana.jpg') }}" class="card-img-top" alt="Pizza Mexicana">
-  <div class="card-body">
-      <h5 class="card-title">Pizza Mexicana</h5>
-      <p class="card-text">La pizza Mexicana destaca por su combinación de ingredientes picantes, 
-        sabrosos y frescos que reflejan la diversidad y riqueza de la cocina mexicana. 
-        Es una opción popular para aquellos que buscan una experiencia de pizza con un toque más latino.</p>
-      <button class="btn btn-primary" onclick="agregarAlCarrito('Pizza Mexicana')">Agregar al Carrito</button>
-  </div>
-</div>
-
-<div class="card">
-  <img src="{{ url_for('static', filename='assets/imgs/vegetariana.jpg') }}" class="card-img-top" alt="Pizza Vegetariana">
-  <div class="card-body">
-      <h5 class="card-title">Pizza Vegetariana</h5>
-      <p class="card-text">La pizza vegetariana es versátil y permite una amplia gama de combinaciones
-         de verduras según las preferencias personales. Es una opción deliciosa y colorida que 
-         resalta los sabores naturales de las verduras frescas y puede adaptarse según los gustos individuales.</p>
-      <button class="btn btn-primary" onclick="agregarAlCarrito('Pizza Vegetariana')">Agregar al Carrito</button>
-  </div>
-</div>
-
-<div class="card">
-  <img src="{{ url_for('static', filename='assets/imgs/carnes.webp') }}" class="card-img-top" alt="Pizza de Carnes">
-  <div class="card-body">
-      <h5 class="card-title">Pizza de Carnes</h5>
-      La pizza de carnes es una opción carnívora que satisface los antojos de aquellos que disfrutan 
-      de una combinación abundante de sabores de carne en cada bocado. 
-      Es una elección popular para los amantes de la carne que desean una experiencia más 
-      contundente y rica en proteínas.
-      <button class="btn btn-primary" onclick="agregarAlCarrito('Pizza de Carnes')">Agregar al Carrito</button>
-  </div>
-</div>
-
-
-
-
-<!-- Script para manejar la adición al carrito a través de AJAX -->
-<script>
-  function agregarAlCarrito(nombreProducto) {
-      // Enviar una solicitud POST a la ruta /agregar_al_carrito
-      $.ajax({
-          url: '/agregar_al_carrito',
-          type: 'POST',
-          contentType: 'application/json;charset=UTF-8',
-          data: JSON.stringify({ nombre: nombreProducto }),
-          success: function(response) {
-              // Manejar la respuesta exitosa (puedes actualizar la interfaz del carrito si es necesario)
-              alert(response.mensaje);
-          },
-          error: function(error) {
-              // Manejar errores, si los hay
-              console.error('Error al agregar al carrito:', error);
-          }
-      });
-  }
-</script>
-
+</body>
+</html>
 
 
 
