@@ -73,7 +73,7 @@ def registerUser():
         password = request.form['password']
         repite_password = request.form['repite_password']
         sexo = request.form['sexo']
-        te_gusta_la_programacion = request.form['te_gusta_la_programacion']
+        # te_gusta_la_programacion = request.form['te_gusta_la_programacion']
         create_at = date.today()
 
         cursor = conexion_MySQLdb.cursor(dictionary=True)
@@ -92,7 +92,7 @@ def registerUser():
         else:
             password_encriptada = generate_password_hash(password, method='pbkdf2:sha256')
             cursor = conexion_MySQLdb.cursor(dictionary=True)
-            cursor.execute('INSERT INTO login_python (tipo_user, nombre, apellido, email, password, sexo, create_at, te_gusta_la_programacion) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)', (tipo_user, nombre, apellido, email, password_encriptada, sexo, create_at, te_gusta_la_programacion))
+            cursor.execute('INSERT INTO login_python (tipo_user, nombre, apellido, email, password, sexo, create_at) VALUES (%s, %s, %s, %s, %s, %s, %s)', (tipo_user, nombre, apellido, email, password_encriptada, sexo, create_at))
             conexion_MySQLdb.commit()
             cursor.close()
             msg = 'Cuenta creada correctamente!'
