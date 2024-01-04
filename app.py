@@ -9,9 +9,9 @@ from routes import * #Vistas
 
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
-#from flask_mail import Mail
+from flask_mail import Mail
 from flask_mail import Mail, Message
-
+from flask import jsonify
 
 # Configuración para Flask-Mail
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -62,7 +62,6 @@ def loginUser():
                 return render_template('public/modulo_login/index.html', msjAlert = msg, typeAlert=0)
     return render_template('public/modulo_login/index.html', msjAlert = 'Debe iniciar sesión.', typeAlert=0)
 
-
 # Registrando una cuenta de Usuario
 @app.route('/registro-usuario', methods=['GET', 'POST'])
 def registerUser():
@@ -104,6 +103,9 @@ def registerUser():
 
         return render_template('public/modulo_login/index.html', msjAlert=msg, typeAlert=1)
     return render_template('public/layout.html', dataLogin=dataLoginSesion(), msjAlert=msg, typeAlert=0)
+
+
+
     # Función para enviar correo de bienvenida
 def send_welcome_email(email):
     subject = "Bienvenido a Pizzeria Merlin"
@@ -193,19 +195,71 @@ def actualizarMiPerfil(id):
         
 from flask import request, redirect, url_for, session
 
-@app.route('/add_to_cart/<int:product_id>')
-def add_to_cart(product_id):
-    # Obtener el producto según su ID desde la lista de productos
-    product = next((p for p in products if p['id'] == product_id), None)
+# Lista para almacenar productos en el carrito (puedes reemplazar esto con una base de datos)
+carrito_de_compras = []
 
-    # Inicializar el carrito en la sesión si aún no existe
-    if 'cart' not in session:
-        session['cart'] = []
+@app.route('/add-to-cart', methods=['POST'])
+def add_to_cart():
+    if 'conectado' in session:
+        product_id = request.form.get('product_id')
+        product_name = request.form.get('product_name')
+        product_price = request.form.get('product_price')
 
-    # Agregar el producto al carrito
-    session['cart'].append({'id': product['id'], 'name': product['name'], 'price': product['price']})
+        # Puedes almacenar la información del producto en la sesión o en una base de datos
+        # Por ahora, almacenaremos la información en la sesión como un ejemplo
+        if 'cart' not in session:
+            session['cart'] = []
 
-    return redirect(url_for('catalog'))
+        session['cart'].append({
+            'id': product_id,
+            'name': product_name,
+            'price': product_price
+        })
+
+        return jsonify({'status': 'success'})
+    else:
+        return jsonify({'status': 'error', 'message': 'Usuario no conectado'})
+
+
+# Ruta para manejar solicitudes de agregar al carrito
+@app.route('/agregar-al-carrito', methods=['POST'])
+def agregar_al_carrito():
+    if 'carrito' not in session:
+        session['carrito'] = []
+
+    # Verifica si la solicitud tiene datos JSON
+    if request.is_json:
+        # Obtén la información del producto desde la solicitud
+        producto = request.json
+        id = producto['id']
+        nombre = producto['nombre']
+        precio = producto['precio']
+
+        # Agrega el producto al carrito en la sesión
+        session['carrito'].append({'id': id, 'nombre': nombre, 'precio': precio})
+
+        return jsonify({'mensaje': 'Producto agregado al carrito'})
+    else:
+        return jsonify({'error': 'El contenido de la solicitud debe estar en formato JSON'}), 415
+
+# Ruta para manejar solicitudes de eliminar del carrito
+@app.route('/eliminar-del-carrito', methods=['POST'])
+def eliminar_del_carrito():
+    if 'carrito' in session:
+        producto = request.json
+        id = producto['id']
+        nombre = producto['nombre']
+        precio = producto['precio']
+
+        # Buscar y eliminar el producto del carrito en la sesión
+        for item in session['carrito']:
+            if item['id'] == id and item['nombre'] == nombre and item['precio'] == precio:
+                session['carrito'].remove(item)
+                break
+
+        return jsonify({'mensaje': 'Producto eliminado del carrito'})
+    else:
+        return jsonify({'error': 'El carrito está vacío'}), 400
 
 if __name__ == "__main__":
     app.run(debug=True, port=8000)

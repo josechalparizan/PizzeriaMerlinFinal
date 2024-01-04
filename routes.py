@@ -66,17 +66,4 @@ def logout():
     msgClose ="La sesión fue cerrada correctamente"
     return render_template('public/modulo_login/index.html', msjAlert = msgClose, typeAlert=1)
 
-@app.route('/agregar_al_carrito', methods=['POST'])
-def agregar_al_carrito():
-    # Obtener el nombre del producto del cuerpo de la solicitud
-    data = request.get_json()
-    nombre_producto = data.get('nombre')
 
-    # Agregar el producto al carrito (puedes almacenar esto en la sesión u otra estructura de datos)
-    carrito.append({'nombre': nombre_producto})
-
-    # Puedes devolver una respuesta JSON para indicar el éxito
-    return jsonify({'mensaje': 'Producto agregado al carrito correctamente'})
-
-# Inicializa el carrito como una lista vacía
-carrito = []

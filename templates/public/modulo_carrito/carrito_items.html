@@ -1,0 +1,5 @@
+<!-- public/modulo_compras/carrito_items.html -->
+
+{% for item in cart %}
+    <li>{{ item['name'] }} - {{ item['price'] }}</li>
+{% endfor %}

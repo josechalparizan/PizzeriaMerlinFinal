@@ -30,4 +30,3 @@ def dataPerfilUsuario():
     mycursor.close() #cerrrando conexion SQL
     conexion_MySQLdb.close() #cerrando conexion de la BD
     return datosUsuario
-
