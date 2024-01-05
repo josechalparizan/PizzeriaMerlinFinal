@@ -23,13 +23,14 @@ button:focus {
 
 .btn-send:hover {
     background-color: #fade0a;
-    color: #333 !important;
+    color: #f58608f3 !important;
     cursor: pointer;
     opacity: 0.8;
 }
 
+/* titulo */
 #title {
-    color: #36BCA7;
+    color: #f58608f3;
     text-align: center;
     margin-top: -80px;
     font-weight: 600;
@@ -41,11 +42,11 @@ button:focus {
 }
 
 #link_sign_up {
-    color: #6EC1E4;
+    color: #BD0D0D;
 }
 
 #link_sign_up:hover {
-    color: #fde74c;
+    color: #f58608f3;
     font-weight: 500;
 }
 
