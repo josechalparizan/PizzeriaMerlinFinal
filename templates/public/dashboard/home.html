@@ -24,6 +24,12 @@
   <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/tarjeta.css') }}">
   <!-- Toastr - Alerts -->
   <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/custom_alert.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy7rafl6H7uOMi7D98hO94CKIte3ZbYUpJ" crossorigin="anonymous">
+  
+
+
 </head>
 
 <body>
@@ -35,11 +41,16 @@
   <main class="content-wrapper mt-5" style="margin-top:100px !important;">
     <div class="container" style="width: 100% !important">
       {% block body %}
-
-          {% include 'public/dashboard/Dashboard.html' %}
-
-          {% include 'public/dashboard/pages/alerts.html' %}
-
+          {% if error404 %}
+              {% include 'public/dashboard/errores/error404.html' %}
+          {% else %}
+              {% if error500 %}
+                  {% include 'public/dashboard/errores/error500.html' %}
+              {% else %}
+                {% include 'public/dashboard/Dashboard.html' %}
+                {% include 'public/dashboard/pages/alerts.html' %}
+              {% endif %}
+          {% endif %}
       {% endblock %}
     </div>
   </main>

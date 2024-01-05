@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tus encabezados y metadatos aquí -->
     <title>Carrito de Compras</title>
 </head>
 <body>
+    <br><br><br><br><br><br>
     <h1>Carrito de Compras</h1>
-    
-    <ul>
-        {% for item in session['cart'] %}
-            <li>{{ item['name'] }} - {{ item['price'] }}</li>
-        {% endfor %}
-    </ul>
 
-    <a href="{{ url_for('catalog') }}">Volver al catálogo</a>
+    {% if 'cart' in session %}
+        <ul>
+            {% for item in session['cart'] %}
+                <li>{{ item.name }} - {{ item.price }}
+                    <a href="{{ url_for('remove_from_cart', product_id=item.id) }}" class="btn btn-danger">Eliminar del carrito</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>El carrito está vacío</p>
+    {% endif %}
+
+    <a href="{{ url_for('catalogo') }}">Volver al catálogo</a>
 </body>
 </html>
 
-<!-- https://roytuts.com/simple-shopping-cart-using-python-flask-mysql/ -->

@@ -12,11 +12,11 @@ app.secret_key = '97110c78ae51a45af397be6534caef90ebb9b1dcb3380af008f90b23a5d161
 @app.errorhandler(404)
 def not_found(error):
     if 'conectado' in session:
-        return redirect(url_for('inicio'))
+        return render_template('public/dashboard/home.html', dataLogin = dataLoginSesion(),error404=True)
     else:
         return render_template('public/modulo_login/index.html')
     
-    
+   
 #Creando mi Decorador para el Home
 @app.route('/')
 def inicio():
@@ -66,17 +66,4 @@ def logout():
     msgClose ="La sesión fue cerrada correctamente"
     return render_template('public/modulo_login/index.html', msjAlert = msgClose, typeAlert=1)
 
-@app.route('/agregar_al_carrito', methods=['POST'])
-def agregar_al_carrito():
-    # Obtener el nombre del producto del cuerpo de la solicitud
-    data = request.get_json()
-    nombre_producto = data.get('nombre')
 
-    # Agregar el producto al carrito (puedes almacenar esto en la sesión u otra estructura de datos)
-    carrito.append({'nombre': nombre_producto})
-
-    # Puedes devolver una respuesta JSON para indicar el éxito
-    return jsonify({'mensaje': 'Producto agregado al carrito correctamente'})
-
-# Inicializa el carrito como una lista vacía
-carrito = []
