@@ -47,6 +47,13 @@ def carrito():
     else:
         return render_template('public/modulo_login/index.html')
 
+@app.route('/nosotros')
+def nosotros():
+    if 'conectado' in session:
+        return render_template('public/acercade/index_acercade.html', dataLogin = dataLoginSesion())
+    else:
+        return render_template('public/modulo_login/index.html')
+
 #Ruta para editar el perfil del cliente
 @app.route('/edit-profile', methods=['GET', 'POST'])
 def editProfile():

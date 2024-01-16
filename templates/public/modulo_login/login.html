@@ -7,8 +7,14 @@
     </div>
     <div class="mb-6">
         <label for="password" class="form-label mt-4">Escribe tu Contraseña</label>
-        <input type="password" name="password" class="form-control" required="true">
+        <div class="password-container">
+            <input type="password" name="password" id="password" class="form-control" required="true"> 
+            <!-- <span class="toggle-password" onclick="togglePasswordVisibility()">
+                <img src="{{ url_for('static', filename='assets/imgs/eye.png') }}" alt="ojo">
+            </span> -->
+        </div>
     </div>
+    
 
     <div class="d-grid gap-2 mt-3 mb-3">
         <button type="submit" class="btn btn-primary btn-send" style="background-color: #BD0D0D;color:aliceblue">!Entrar Ahora!</button>
@@ -21,3 +27,5 @@
         </a>
     </div>
 </form>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
