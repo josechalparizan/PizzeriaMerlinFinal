@@ -104,3 +104,25 @@ button:focus {
         width: 80% !important;
     }
 }
+
+
+/* ojo */
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* fondo home*/
+#fondo_inicio {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #f9f4f4 /* ajusta el color del texto según tu necesidad */
+}

@@ -1,86 +1,83 @@
-<style>
-    body {
-      background-color: #f8f9fa; /* Un color de fondo claro para resaltar las tarjetas */
-    }
-  
-    .card {
-      background-color: #BD0D0D; /* Color vino tinto para las tarjetas */
-      color: #fff; /* Texto blanco para contrastar */
-      margin-bottom: 20px;
-    }
-  
-    .card-title {
-      color: #fff; /* Color blanco para el título de la tarjeta */
-    }
-  </style>
-  <br><br><br><br><br>
-  <h2>Productos Disponibles</h2>
-  
-  <!DOCTYPE html>
-  <html lang="en">
-  
-  <head>
-    <!-- Tus metadatos y enlaces a las hojas de estilo van aquí -->
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
     <style>
-      body {
+        body {
         background-color: #f8f9fa; /* Un color de fondo claro para resaltar las tarjetas */
-      }
-  
-      .card {
+        }
+    
+        .card {
         background-color: #BD0D0D; /* Color vino tinto para las tarjetas */
         color: #fff; /* Texto blanco para contrastar */
         margin-bottom: 20px;
-      }
-  
-      .card-title {
+        }
+    
+        .card-title {
         color: #fff; /* Color blanco para el título de la tarjeta */
-      }
-  
-      #carrito-container {
-          position: fixed;
-          right: 0;
-          top: 90;
-          bottom: 0;
-          width: 400px; /* Aumentar el ancho para mostrar mejor los elementos del carrito */
-          background-color: #BD0D0D;
-          color: #fff;
-          padding: 20px; /* Ajustar el padding según sea necesario */
-          display: none;
-          z-index: 999;
-          overflow-y: auto; /* Agregar desplazamiento vertical si hay demasiados elementos */
-  }
-  
-  
-      #lista-carrito li {
-          margin-bottom: 10px;
-          }
-  
-  
-      #cerrar-carrito {
-          background-color: #fff;
-          color: #BD0D0D;
-          border: none;
-          padding: 10px;
-          cursor: pointer;
-          width: 100%;
-          }
-          #mostrar-carrito {
-            background-color: #851111;
-            color: #fff;
-            padding: 15px 30px;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-30%, -600%);
-            z-index: 1000;
-            }
+        }
 
+        body {
+            background-color: #f8f9fa; /* Un color de fondo claro para resaltar las tarjetas */
+        }
+    
+        .card {
+            background-color: #BD0D0D; /* Color vino tinto para las tarjetas */
+            color: #fff; /* Texto blanco para contrastar */
+            margin-bottom: 20px;
+        }
+    
+        .card-title {
+            color: #fff; /* Color blanco para el título de la tarjeta */
+        }
+    
+        #carrito-container {
+            position: fixed;
+            right: 0;
+            top: 90;
+            bottom: 0;
+            width: 400px; /* Aumentar el ancho para mostrar mejor los elementos del carrito */
+            background-color: #BD0D0D;
+            color: #fff;
+            padding: 20px; /* Ajustar el padding según sea necesario */
+            display: none;
+            z-index: 999;
+            overflow-y: auto; /* Agregar desplazamiento vertical si hay demasiados elementos */
+        }
+    
+    
+        #lista-carrito li {
+            margin-bottom: 10px;
+            }
+    
+    
+        #cerrar-carrito {
+            background-color: #fff;
+            color: #BD0D0D;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            }
+            #mostrar-carrito {
+                background-color: #851111;
+                color: #fff;
+                padding: 15px 30px;
+                border: none;
+                cursor: pointer;
+                font-size: 18px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-30%, -600%);
+                z-index: 1000;
+                }
     </style>
-  
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   
@@ -126,180 +123,450 @@
         });
       });
     </script>
-  
-  </head>
-  
-  <body>
-  
-    {% block body %}
-    <!-- ... Contenido específico de tu bloque 'body' ... -->
+</head>
 
-    <div id="carrito-container">
-        <h2>Carrito de Compras</h2>
-        <ul id="lista-carrito">
-            {% for producto in carrito %}
-                <li>
-                    {{ producto.nombre }}
-                    <button class="eliminar-item" data-id="{{ producto.id }}">Eliminar</button>
-                </li>
-            {% endfor %}
-        </ul>
-        
-        <button id="cerrar-carrito">Cerrar Carrito</button>
+
+<!-- ****************************************************************************************************************************************************************** -->
+<body id="fondo_inicio" style="background-image: url('{{ url_for('static', filename='assets/imgs/pz/fondo_entrada.jpg') }}');">
+    
+    {% block body %}
+    <br><br><br><br><br>
+    <h2>Productos Disponibles</h2>
+    <div class="accordion" id="accordionExample">
+
+        <!--ENSALADA DE FRUTAS -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              ENSALADA DE FRUTAS
+            </button>
+          </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <!-- contenido tarjeta -->
+                    <div class="container mt-12">
+                        <div class="row">
+                            <!-- Pizza Mixta -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/mixta.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA MIXTA: 40.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="1" data-nombre="MIXTA" data-precio="40000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Cuatro estaciones -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/cuatroesta.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA CUATRO ESTACIONES: 44.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="2" data-nombre="CUATRO ESTACIONES" data-precio="44000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Hawaiiana -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/pzz_hw.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA HAWAIANA: 36.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="3" data-nombre="HAWAIANA" data-precio="36000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Tropical -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/Tropical.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA TROPICAL: 36.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="4" data-nombre="TROPICAL" data-precio="36000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BEBIDAS FRIAS Y HELADOS -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                BEBIDAS FRIAS Y HELADOS
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                      <!-- contenido tarjeta -->
+                    <div class="container mt-12">
+                        <div class="row">
+                            <!-- Pizza Mixta -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/mixta.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA MIXTA: 40.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="1" data-nombre="MIXTA" data-precio="40000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Cuatro estaciones -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/cuatroesta.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA CUATRO ESTACIONES: 44.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="2" data-nombre="CUATRO ESTACIONES" data-precio="44000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Hawaiiana -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/pzz_hw.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA HAWAIANA: 36.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="3" data-nombre="HAWAIANA" data-precio="36000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Tropical -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/Tropical.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA TROPICAL: 36.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="4" data-nombre="TROPICAL" data-precio="36000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COCTELES Y CAFES -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                COCTELES Y CAFES
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                      <!-- contenido tarjeta -->
+                    <div class="container mt-12">
+                        <div class="row">
+                            <!-- Pizza Mixta -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/mixta.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA MIXTA: 40.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="1" data-nombre="MIXTA" data-precio="40000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Cuatro estaciones -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/cuatroesta.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA CUATRO ESTACIONES: 44.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="2" data-nombre="CUATRO ESTACIONES" data-precio="44000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Hawaiiana -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/pzz_hw.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA HAWAIANA: 36.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="3" data-nombre="HAWAIANA" data-precio="36000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Tropical -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/Tropical.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA TROPICAL: 36.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="4" data-nombre="TROPICAL" data-precio="36000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PIZZAS -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                PIZZAS
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                      <!-- contenido tarjeta -->
+                    <div class="container mt-12">
+                        <div class="row">
+                            <!-- Pizza Mixta -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/mixta.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA MIXTA: 40.000 </h5>
+                                        <p class="card-text">Puedes escoger dos sabores (Hawayana,Tropical,BBQ,Carnes,Pollo,Clasica,Vegetariana,Fontier).</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="1" data-nombre="MIXTA" data-precio="40000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Cuatro estaciones -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/cuatroesta.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA CUATRO ESTACIONES: 44.000 </h5>
+                                        <p class="card-text">Puedes escoger cuatro sabores (Hawayana,Tropical,BBQ,Carnes,Pollo,Clasica,Vegetariana,Fontier).</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="2" data-nombre="CUATRO ESTACIONES" data-precio="44000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Hawaiiana -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/pzz_hw.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA HAWAIANA: 36.000 </h5>
+                                        <p class="card-text">Contiene Queso, Piña y Jamon e ingredientes de la casa.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="3" data-nombre="HAWAIANA" data-precio="36000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Tropical -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/Tropical.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA TROPICAL: 36.000 </h5>
+                                        <p class="card-text">Contiene Queso, Piña, Durazno, Cereza y Pasas e ingredientes de la casa. </p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="4" data-nombre="TROPICAL" data-precio="36000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <!-- Pizza Carnes -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/carnes.webp') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA CARNES: 36.000 </h5>
+                                        <p class="card-text">Contiene Queso, Jamón mortadela, Ranchera y Salami.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="5" data-nombre="CARNES" data-precio="36000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Camarones -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/camarones.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA CAMARONES: 44.000 </h5>
+                                        <p class="card-text">Contiene Queso, Camarón, Tocineta, Tomate y Pimenton.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="6" data-nombre="CAMARONES" data-precio="44000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Pollo y Champiñones -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/POLLOCHAM.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA POLLO Y CHAMPIÑONES: 36.000 </h5>
+                                        <p class="card-text">Contiene Queso, Pollo y Champiñones.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="7" data-nombre="POLLO Y CHAMPIÑONES" data-precio="38000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Peperoni, Tocineta y Jamón -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/pepejamon.webp') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PEPERONI TOCINETA Y JAMON: 38.000 </h5>
+                                        <p class="card-text">Contiene Queso, Peperoni, Tocineta y Jamón.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="8" data-nombre="PEPERONI TOCINETA" data-precio="38000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="row">
+                            <!-- Pizza Clasica -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/clasica.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA CLASICA: 38.000 </h5>
+                                        <p class="card-text">Contiene Queso, Salami, Jamón, Cábanos,Cebolla, Pimentón, Peperoni y Tomate.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="9" data-nombre="CLASICA" data-precio="38000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Vegetariana -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/vegetariana.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA VEGETARIANA: 36.000 </h5>
+                                        <p class="card-text">Contiene Queso, Aceitunas, Tomate, Cebolla, Orégano, Alcaparras, Champiñones.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="10" data-nombre="VEGETARIANA" data-precio="36000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OTROS -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOtros" aria-expanded="false" aria-controls="collapseOtros">
+                OTROS
+              </button>
+            </h2>
+            <div id="collapseOtros" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                      <!-- contenido tarjeta -->
+                    <div class="container mt-12">
+                        <div class="row">
+                            <!-- Pizza Mixta -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/mixta.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA MIXTA: 40.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="1" data-nombre="MIXTA" data-precio="40000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Cuatro estaciones -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/cuatroesta.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA CUATRO ESTACIONES: 44.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="2" data-nombre="CUATRO ESTACIONES" data-precio="44000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Hawaiiana -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/pzz_hw.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA HAWAIANA: 36.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="3" data-nombre="HAWAIANA" data-precio="36000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pizza Tropical -->
+                            <div class="col-md-3">
+                                <div class="card h-100" style="width: 100%;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/Tropical.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PIZZA TROPICAL: 36.000 </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary add-to-cart-btn" data-id="4" data-nombre="TROPICAL" data-precio="36000">Añadir al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="carrito-container">
+            <h2>Carrito de Compras</h2>
+            <ul id="lista-carrito">
+                {% for producto in carrito %}
+                    <li>
+                        {{ producto.nombre }}
+                        <button class="eliminar-item" data-id="{{ producto.id }}">Eliminar</button>
+                    </li>
+                {% endfor %}
+            </ul>           
+            <button id="cerrar-carrito">Cerrar Carrito</button>
+        </div>
     </div>
 
-{% endblock %}
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var botonesEliminar = document.querySelectorAll('.eliminar-item');
+    
 
-        botonesEliminar.forEach(function (boton) {
-            boton.addEventListener('click', function () {
-                var idProducto = boton.getAttribute('data-id');
-                eliminarProductoDelCarrito(idProducto);
-            });
-        });
 
-        function eliminarProductoDelCarrito(idProducto) {
-            // Implementa aquí la lógica para eliminar el producto del carrito
-            // Puede ser mediante AJAX, actualización del estado en el cliente, etc.
-            console.log('Eliminar producto con ID:', idProducto);
-        }
-    });
-</script>
-    <!-- Tarjetas de Pizzas -->
-  <div class="container mt-5">
-      <div class="row">
-  
-          <!-- Pizza Mixta -->
-          <div class="col-md-4">
-              <div class="card h-100" style="width: 100%;">
-                  <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/mixta.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
-                  <div class="card-body">
-                      <h5 class="card-title">PIZZA MIXTA: 40.000 </h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary add-to-cart-btn" data-id="1" data-nombre="MIXTA" data-precio="40000">Añadir al carrito</a>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Pizza Cuatro estaciones -->
-          <div class="col-md-4">
-              <div class="card h-100" style="width: 100%;">
-                  <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/cuatroesta.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
-                  <div class="card-body">
-                      <h5 class="card-title">PIZZA CUATRO ESTACIONES: 44.000 </h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary add-to-cart-btn" data-id="2" data-nombre="CUATRO ESTACIONES" data-precio="44000">Añadir al carrito</a>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Pizza Hawaiiana -->
-          <div class="col-md-4">
-              <div class="card h-100" style="width: 100%;">
-                  <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/pzz_hw.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
-                  <div class="card-body">
-                      <h5 class="card-title">PIZZA HAWAIANA: 36.000 </h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary add-to-cart-btn" data-id="3" data-nombre="HAWAIANA" data-precio="36000">Añadir al carrito</a>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Pizza Tropical -->
-          <div class="col-md-4">
-              <div class="card h-100" style="width: 100%;">
-                  <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/Tropical.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
-                  <div class="card-body">
-                      <h5 class="card-title">PIZZA TROPICAL: 36.000 </h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary add-to-cart-btn" data-id="4" data-nombre="TROPICAL" data-precio="36000">Añadir al carrito</a>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Pizza Carnes -->
-          <div class="col-md-4">
-              <div class="card h-100" style="width: 100%;">
-                  <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/carnes.webp') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
-                  <div class="card-body">
-                      <h5 class="card-title">PIZZA CARNES: 36.000 </h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary add-to-cart-btn" data-id="5" data-nombre="CARNES" data-precio="36000">Añadir al carrito</a>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Pizza Camarones -->
-          <div class="col-md-4">
-              <div class="card h-100" style="width: 100%;">
-                  <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/camarones.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
-                  <div class="card-body">
-                      <h5 class="card-title">PIZZA CAMARONES: 44.000 </h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary add-to-cart-btn" data-id="6" data-nombre="CAMARONES" data-precio="44000">Añadir al carrito</a>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Pizza Pollo y Champiñones -->
-          <div class="col-md-4">
-              <div class="card h-100" style="width: 100%;">
-                  <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/POLLOCHAM.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
-                  <div class="card-body">
-                      <h5 class="card-title">PIZZA POLLO Y CHAMPIÑONES: 36.000 </h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary add-to-cart-btn" data-id="7" data-nombre="POLLO Y CHAMPIÑONES" data-precio="38000">Añadir al carrito</a>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Pizza Peperoni, Tocineta y Jamón -->
-          <div class="col-md-4">
-              <div class="card h-100" style="width: 100%;">
-                  <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/pepejamon.webp') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
-                  <div class="card-body">
-                      <h5 class="card-title">PEPERONI TOCINETA Y JAMON: 38.000 </h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary add-to-cart-btn" data-id="8" data-nombre="PEPERONI TOCINETA" data-precio="38000">Añadir al carrito</a>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Pizza Clasica -->
-          <div class="col-md-4">
-              <div class="card h-100" style="width: 100%;">
-                  <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/clasica.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
-                  <div class="card-body">
-                      <h5 class="card-title">PIZZA CLASICA: 38.000 </h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary add-to-cart-btn" data-id="9" data-nombre="CLASICA" data-precio="38000">Añadir al carrito</a>
-                  </div>
-              </div>
-          </div>
-  
-          <!-- Pizza Vegetariana -->
-          <div class="col-md-4">
-              <div class="card h-100" style="width: 100%;">
-                  <img class="card-img-top" src="{{ url_for('static', filename='assets/imgs/vegetariana.jpg') }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
-                  <div class="card-body">
-                      <h5 class="card-title">PIZZA VEGETARIANA: 36.000 </h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary add-to-cart-btn" data-id="10" data-nombre="VEGETARIANA" data-precio="36000">Añadir al carrito</a>
-                  </div>
-              </div>
-          </div>
-  
-      </div>
-  </div>
-  
+
     <!-- Botón para mostrar/ocultar el carrito -->
     <button id="mostrar-carrito">Mostrar Carrito</button>
-  
-    <!-- Tus scripts van aquí -->
-  
-  </body>
-  
-  </html>
+
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+</body>
+</html>

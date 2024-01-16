@@ -2,9 +2,11 @@
 <html lang="es">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy7rafl6H7uOMi7D98hO94CKIte3ZbYUpJ" crossorigin="anonymous">
+    
 </head>
 
-<body>
+<body id="fondo_inicio" style="background-image: url('{{ url_for('static', filename='assets/imgs/pz/fondo_adentro.jpg') }}');">
+
     <br><br>
     <div class="row justify-content-center">
         <div class="col-md-12 mb-2">
@@ -13,7 +15,7 @@
             <p class="text-center">¡Bienvenido <strong>{{ dataLogin.nombre }},</strong> esperamos que disfrutes nuestro servicio! </p>
             {% endif %}
         </div>
-
+        
         <!--Tarjeta 1-->
         <div class="container">
             <!-- Encabezado con imagen de fondo -->
