@@ -20,6 +20,35 @@
         <div class="container">
             <!-- Encabezado con imagen de fondo -->
             <header class="jumbotron jumbotron-fluid text-center header-background" style="background-color: #BD0D0D">
+                <div id="carouselExampleSlidesOnly" class="container carousel slide mx-auto" data-ride="carousel" style="text-align: center;">
+                    <div class="carousel-inner">
+                        
+                        <div class="carousel-item active">
+                            <img src="{{ url_for('static', filename='assets/imgs/carrusel/camarones.jpg') }}" class="d-block mx-auto" style="width: 400px; height: 300px;" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='assets/imgs/comidas/en_exotica.jpg') }}" class="d-block mx-auto" style="width: 400px; height: 300px;" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='assets/imgs/comidas/be_limonada.jpg') }}" class="d-block mx-auto" style="width: 400px; height: 300px;" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='assets/imgs/carrusel/clasica.jpg') }}" class="d-block mx-auto" style="width: 400px; height: 300px;" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='assets/imgs/comidas/ot_picada.jpg') }}" class="d-block mx-auto" style="width: 400px; height: 300px;" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='assets/imgs/carrusel/cuatroesta.jpg') }}" class="d-block mx-auto" style="width: 400px; height: 300px;" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='assets/imgs/comidas/be_brownihelado.jpg') }}" class="d-block mx-auto" style="width: 400px; height: 300px;" alt="...">
+                        </div>
+
+                    </div>
+                </div>
+                
+                <br>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-11 mx-auto">
@@ -44,20 +73,6 @@
                     </div>
                 </div>
             </header>
-        </div>
-
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" style="text-align: center;">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{ url_for('static', filename='assets/imgs/carrusel/camarones.jpg') }}" class="d-block w-50" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ url_for('static', filename='assets/imgs/carrusel/clasica.jpg') }}" class="d-block w-50" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ url_for('static', filename='assets/imgs/carrusel/cuatroesta.jpg') }}" class="d-block w-50" alt="...">
-                </div>
-            </div>
         </div>
 
     </div>
