@@ -1,6 +1,8 @@
 from flask import Flask, render_template, redirect, url_for, session
 from funciones import *  #Importando mis Funciones
 from flask import request, jsonify
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 #Declarando nombre de la aplicación e inicializando, crear la aplicación Flask
 app = Flask(__name__)
@@ -47,10 +49,32 @@ def carrito():
     else:
         return render_template('public/modulo_login/index.html')
 
+# Datos de las bebidas
+bebidas_data = [
+    {"nombre": "MALTEADA", "precio": 10000},
+    {"nombre": "LIMONADA NATURAL", "precio": 4500},
+    {"nombre": "MALTEADA", "precio": 10000},
+    {"nombre": "LIMONADA NATURAL", "precio": 4500},
+    {"nombre": "MALTEADA", "precio": 10000},
+    {"nombre": "LIMONADA NATURAL", "precio": 4500},
+    {"nombre": "MALTEADA", "precio": 10000},
+    {"nombre": "LIMONADA NATURAL", "precio": 4500},
+    {"nombre": "MALTEADA", "precio": 10000},
+    {"nombre": "LIMONADA NATURAL", "precio": 4500},
+    # ... Agrega el resto de las bebidas con sus datos
+]
+
+# Configuración de paginación
+ITEMS_PER_PAGE = 4
+
 @app.route('/nosotros')
 def nosotros():
     if 'conectado' in session:
-        return render_template('public/acercade/index_acercade.html', dataLogin = dataLoginSesion())
+        page = request.args.get('page', 1, type=int)
+        start_idx = (page - 1) * ITEMS_PER_PAGE
+        end_idx = start_idx + ITEMS_PER_PAGE
+        bebidas_subset = bebidas_data[start_idx:end_idx]
+        return render_template('public/acercade/index_acercade.html', dataLogin=dataLoginSesion(), bebidas=bebidas_subset, page=page, ITEMS_PER_PAGE=ITEMS_PER_PAGE)
     else:
         return render_template('public/modulo_login/index.html')
 

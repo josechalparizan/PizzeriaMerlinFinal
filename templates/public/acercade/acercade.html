@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-Zk1EQr1M8brY8NEic9SDy8K4zyly5elJq1DPa8NL7TqxMCIy9qWT5W7dJp7W+0p6" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <style>
         body {
@@ -79,6 +80,72 @@
                 transform: translate(-30%, -600%);
                 z-index: 1000;
                 }
+
+                #students-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .student-card {
+            width: 200px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #students-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .student-card {
+            width: 200px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #students-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .student-card {
+            width: 200px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #pagination-card {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center; /* Centrar los botones horizontalmente */
+        }
+
+        .pagination-button {
+            margin: 0 2px;
+            cursor: pointer;
+            font-size: 10px;
+            padding: 2px 4px;
+        }
+
+        .next-button {
+            font-size: 10px;
+            padding: 2px 4px;
+        }
     </style>
     <!-- jQuery -->
     
@@ -89,8 +156,64 @@
 <body id="fondo_inicio" style="background-image: url('{{ url_for('static', filename='assets/imgs/pz/fondo_adentro2.jpg') }}');">
     
     {% block body %}
-    <br><br><br><br><br>
-    <h2>acerca de </h2>
+    <br><br>
+    
+    <div class="container" style="background-color: #ddd;">
+        <br>
+        <div id="students-container" class="row"></div>
+        <div id="pagination-card" class="card col-md-1" style="background-color: #ddd;">
+            <div class="col-md-12">
+                <div id="pagination-container" class="row"></div>
+            </div>
+        </div>
+        <br>
+    </div>
+
+
+    
+    
+
+
+
+
+
+    
+
+    <div class="container mt-5">
+
+        <div class="row">
+            <!-- Misión -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Misión</h2>
+                        <p class="card-text">
+                            En Pizzería Merlin, nos dedicamos a ofrecer a nuestros clientes la mejor experiencia culinaria,
+                            especializándonos en pizzas y comidas rápidas. Nuestra misión es proporcionar productos de
+                            alta calidad, un servicio excepcional y un ambiente acogedor para disfrutar de momentos
+                            inolvidables con amigos y familiares.
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Visión -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Visión</h2>
+                        <p class="card-text">
+                            Ser reconocidos como la mejor pizzería y restaurante de comidas rápidas en la región,
+                            destacándonos por la calidad de nuestros productos, la atención excepcional al cliente
+                            y la constante innovación en nuestro menú. Nos esforzamos por ser el lugar preferido de
+                            quienes buscan deliciosas pizzas y una experiencia gastronómica única.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     
 
     {% endblock %}
@@ -99,6 +222,96 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        // Datos de ejemplo con nombres y cédulas de estudiantes
+        const allStudents = [
+            { nombre: 'Juan Pérez', cedula: '123456789' },
+            { nombre: 'María García', cedula: '987654321' },
+            { nombre: 'Juan xxx', cedula: '123456789' },
+            { nombre: 'María xxx', cedula: '987654321' },
+            { nombre: 'Juan yyy', cedula: '123456789' },
+            { nombre: 'María yyy', cedula: '987654321' },
+            // Agrega más estudiantes según sea necesario
+        ];
+
+        // Constantes de paginación
+        const studentsPerPage = 2;
+        let currentPage = 1;
+
+        // Función para mostrar los estudiantes de la página actual
+        function showStudents() {
+            const startIndex = (currentPage - 1) * studentsPerPage;
+            const endIndex = startIndex + studentsPerPage;
+            const studentsToShow = allStudents.slice(startIndex, endIndex);
+
+            const studentsContainer = document.getElementById('students-container');
+            studentsContainer.innerHTML = '';
+
+            studentsToShow.forEach(student => {
+                const studentCard = document.createElement('div');
+                studentCard.classList.add('col-md-6', 'mb-4');
+                studentCard.innerHTML = `
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">${student.nombre}</h5>
+                            <p class="card-text">Cédula: ${student.cedula}</p>
+                        </div>
+                    </div>
+                `;
+                studentsContainer.appendChild(studentCard);
+            });
+        }
+
+        // Función para actualizar los botones de paginación
+        function updatePaginationButtons() {
+            const paginationContainer = document.getElementById('pagination-container');
+            paginationContainer.innerHTML = '';
+
+            const totalPages = Math.ceil(allStudents.length / studentsPerPage);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.textContent = i;
+                button.classList.add('btn', 'btn-warning', 'pagination-button');
+
+                if (i === currentPage) {
+                    button.classList.add('active');
+                }
+
+                button.addEventListener('click', () => {
+                    currentPage = i;
+                    showStudents();
+                    updatePaginationButtons();
+                });
+
+                paginationContainer.appendChild(button);
+            }
+
+            // Agregar botón de "Página siguiente" más pequeño
+            const nextButton = document.createElement('button');
+            nextButton.innerHTML = '&raquo;'; // Símbolo de "Página siguiente"
+            nextButton.classList.add('btn', 'btn-success', 'pagination-button', 'next-button');
+            nextButton.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    showStudents();
+                    updatePaginationButtons();
+                }
+            });
+            paginationContainer.appendChild(nextButton);
+        }
+
+        // Mostrar los estudiantes y actualizar los botones de paginación al cargar la página
+        showStudents();
+        updatePaginationButtons();
+    </script>
 
 </body>
 </html>
