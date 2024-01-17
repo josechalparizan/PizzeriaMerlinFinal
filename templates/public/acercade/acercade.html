@@ -12,33 +12,19 @@
 
     <style>
         body {
-        background-color: #f8f9fa; /* Un color de fondo claro para resaltar las tarjetas */
-        }
-    
-        .card {
-        background-color: #BD0D0D; /* Color vino tinto para las tarjetas */
-        color: #fff; /* Texto blanco para contrastar */
-        margin-bottom: 20px;
-        }
-    
-        .card-title {
-        color: #fff; /* Color blanco para el título de la tarjeta */
-        }
-
-        body {
             background-color: #f8f9fa; /* Un color de fondo claro para resaltar las tarjetas */
         }
-    
+
         .card {
             background-color: #BD0D0D; /* Color vino tinto para las tarjetas */
             color: #fff; /* Texto blanco para contrastar */
             margin-bottom: 20px;
         }
-    
+
         .card-title {
             color: #fff; /* Color blanco para el título de la tarjeta */
         }
-    
+
         #carrito-container {
             position: fixed;
             right: 0;
@@ -52,13 +38,11 @@
             z-index: 999;
             overflow-y: auto; /* Agregar desplazamiento vertical si hay demasiados elementos */
         }
-    
-    
+
         #lista-carrito li {
             margin-bottom: 10px;
-            }
-    
-    
+        }
+
         #cerrar-carrito {
             background-color: #fff;
             color: #BD0D0D;
@@ -66,51 +50,20 @@
             padding: 10px;
             cursor: pointer;
             width: 100%;
-            }
-            #mostrar-carrito {
-                background-color: #851111;
-                color: #fff;
-                padding: 15px 30px;
-                border: none;
-                cursor: pointer;
-                font-size: 18px;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-30%, -600%);
-                z-index: 1000;
-                }
-
-                #students-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin-top: 20px;
         }
 
-        .student-card {
-            width: 200px;
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        #students-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-
-        .student-card {
-            width: 200px;
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        #mostrar-carrito {
+            background-color: #851111;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-30%, -600%);
+            z-index: 1000;
         }
 
         #students-container {
@@ -132,22 +85,33 @@
         #pagination-card {
             margin-top: 20px;
             display: flex;
-            justify-content: center; /* Centrar los botones horizontalmente */
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Añadir envoltura de contenido */
         }
 
         .pagination-button {
-            margin: 0 2px;
+            margin: 0 5px; /* Ajusta el espacio entre los botones */
             cursor: pointer;
-            font-size: 10px;
-            padding: 2px 4px;
+            font-size: 14px;
+            padding: 6px 12px;
+            background-color: #BD0D0D;
+            color: #ffffff;
+            border: 1px solid #BD0D0D;
+            border-radius: 3px;
         }
 
         .next-button {
-            font-size: 10px;
-            padding: 2px 4px;
+            font-size: 14px;
+            padding: 6px 12px;
+            background-color: #BD0D0D;
+            color: #ffffff;
+            border: 1px solid #BD0D0D;
+            border-radius: 3px;
+            margin-left: 5px; /* Ajusta el espacio entre el último botón y el botón "Página siguiente" */
         }
     </style>
-    <!-- jQuery -->
+                    <!-- jQuery -->
     
 </head>
 
@@ -160,13 +124,15 @@
     
     <div class="container" style="background-color: #ddd;">
         <br>
-        <h2 id >Productos mas vendidos den Pizzeria Merlin</h2>
+        <h2 style="color:#BD0D0D;" >Conoce los Productos mas vendidos de la Pizzeria Merlin</h2>
         <div id="students-container" class="row"></div>
-        <div id="pagination-card" class="card col-md-1" style="background-color: #ddd;">
+        <div id="pagination-card" class="card col-md-12" style="background-color: #ddd;">
             <div class="col-md-12">
-                <div id="pagination-container" class="row"></div>
+                <div id="pagination-container" class="d-flex justify-content-center"></div>
             </div>
         </div>
+        
+        
         <br>
     </div>
 
@@ -233,17 +199,21 @@
     <script>
         // Datos de ejemplo con nombres y cédulas de estudiantes
         const allStudents = [
-            { nombre: 'Juan Pérez', cedula: '123456789' },
-            { nombre: 'María García', cedula: '987654321' },
-            { nombre: 'Juan xxx', cedula: '123456789' },
-            { nombre: 'María xxx', cedula: '987654321' },
-            { nombre: 'Juan yyy', cedula: '123456789' },
-            { nombre: 'María yyy', cedula: '987654321' },
+            { nombre: 'Agua Panela con Queso', cedula: '8.000' },
+            { nombre: 'Milo Frio', cedula: '7.000' },
+            { nombre: 'Copa Helado', cedula: '6.000' },
+            { nombre: 'Pizza Mixta', cedula: '40.000' },
+            { nombre: 'Vino Caliente', cedula: '12.000' },
+            { nombre: 'Alitas BBQ', cedula: '15.000' },
+            { nombre: 'Madurito Merlin', cedula: '7.000' },
+            { nombre: 'Hervido Merlin', cedula: '12.000' },
+            { nombre: 'Capuchino Sin Licor', cedula: '15.000' },
+            { nombre: 'Banana Split', cedula: '10.000' },
             // Agrega más estudiantes según sea necesario
         ];
 
-        // Constantes de paginación
-        const studentsPerPage = 2;
+             // Constantes de paginación
+             const studentsPerPage = 2;
         let currentPage = 1;
 
         // Función para mostrar los estudiantes de la página actual
@@ -260,6 +230,7 @@
                 studentCard.classList.add('col-md-6', 'mb-4');
                 studentCard.innerHTML = `
                     <div class="card">
+                       
                         <div class="card-body">
                             <h5 class="card-title">${student.nombre}</h5>
                             <p class="card-text">Cédula: ${student.cedula}</p>
@@ -269,6 +240,7 @@
                 studentsContainer.appendChild(studentCard);
             });
         }
+
 
         // Función para actualizar los botones de paginación
         function updatePaginationButtons() {
