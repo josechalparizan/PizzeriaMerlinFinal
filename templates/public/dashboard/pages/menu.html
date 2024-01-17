@@ -1,3 +1,6 @@
+
+
+
 <header class="header">
   <hr class="wine-divider" style="border: 2px solid #BD0D0D;">
   <div class="">
@@ -8,6 +11,9 @@
   <input class="menu-btn" type="checkbox" id="menu-btn"/>
   <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
   <ul class="menu" id="menu">
+   
+    
+
     <li>
       <a href="{{ url_for('inicio') }}"> Inicio
         <i class="bi bi-house-door"></i>
@@ -40,7 +46,41 @@
         Salir
       </a>
     </li>
-  </ul>
-  <br><br><br>
-  <hr class="wine-divider" style="border: 2px solid #BD0D0D;">
-</header>
+
+    <style>
+      /* Estilo para el botón de traducción */
+      #google_translate_element {
+        position: absolute; /* Posicionamiento absoluto */
+        top: 30px; /* Ajusta la distancia desde la parte superior según tu diseño */
+        left: 130px; /* Ajusta la distancia desde la izquierda según tu diseño */
+        background-color: #ffffff; /* Color de fondo (ajústalo según tu diseño) */
+        color: #000000; /* Color del texto */
+        border: none; /* Sin borde */
+        padding: 4px 12px; /* Ajusta el relleno según tu diseño */
+        border-radius: 4px; /* Bordes redondeados */
+        cursor: pointer; /* Cambia el cursor al pasar el ratón */
+      }
+    
+      #google_translate_element:hover {
+        background-color: #BD0D0D; /* Cambia el color de fondo al pasar el ratón */
+      }
+    </style>
+    
+    <!-- El botón de traducción -->
+    <!-- <button id="google_translate_element" class="google"></button> -->
+    
+    <!-- Google Translate -->
+    <div id="google_translate_element">IDIOMA</div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'es', autoDisplay: false}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Fin de Google Translate -->
+    
+    </ul>
+    <br><br><br>
+    <hr class="wine-divider" style="border: 2px solid #BD0D0D;">
+    </header>
+    
